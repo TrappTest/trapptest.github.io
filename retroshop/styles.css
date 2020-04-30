@@ -274,7 +274,7 @@ nav p {
 	display: block;
 }
 .menu-nav.active > p {
-	animation: opacityp 0.5s;
+	animation: opacityp 1s;
 }
 @keyframes opacityp {
 	from {opacity: 0;}
