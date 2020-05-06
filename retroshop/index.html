@@ -162,8 +162,10 @@
             "price": 5.99
         }        
     ];
+
+    var cart = [];
+
     for (var index = 0; index < items.length; index++) {
-    	console.log(items[index].title);
 
     	var div = document.createElement("DIV");
     		div.classList.add("divItem");
@@ -235,7 +237,7 @@
                 var removeItem = document.createElement("button");
                     removeItem.classList.add("remove-button");
                         $(removeItem).html("X");
-                            removeItem.setAttribute("onclick", "removeCartItem("+ id + ")");
+                            removeItem.setAttribute("onclick", "removeCartItem(" + id + ", " + cart.length + ")");
                                     cartRemoveDiv.appendChild(removeItem);
 
         cartDiv.appendChild(cartImgDiv);
@@ -244,11 +246,15 @@
                     cartDiv.appendChild(cartRemoveDiv);
 
         document.getElementById("cart-items").appendChild(cartDiv);
+
+        cart.push(items[id]);
+        console.log(cart);
     }
     function openCart () {
         $("#cart-open").fadeToggle(100);
     }
-    function removeCartItem (id) {
+    function removeCartItem (id, cartId) {
+
         $("#" + "item-" + id).remove();
             $("#" + id).css("display", "inline-block");
         
@@ -257,6 +263,26 @@
         number = total - items[id].price;
         total = number.toFixed(2);
              $(".amount").html(total);
+
+        cart.splice(cartId, 1);
+        console.log(cart);
+
+        for (var i = 0; i < cart.length; i++){
+            if (i >= cartId) {
+                let itemId = document.getElementsByClassName("cart-item")[i].getAttribute("id");
+                itemId.toString();
+
+                let id = itemId.slice(5, 6);
+
+                let button = document.getElementsByClassName("cart-item")[i].getElementsByClassName("cart-div-remove")[0].getElementsByClassName("remove-button")[0];
+
+                button.setAttribute("onclick", "removeCartItem(" + id + ", " + i + ")");
+
+
+
+            } else {};
+        };
+
     }
     function toggleMenu () {
         $("#line-1").toggleClass("active");
