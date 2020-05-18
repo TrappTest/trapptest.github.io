@@ -14,26 +14,35 @@
 			<a href="#">Contact</a>
 			<a href="#">About</a>
 		</nav>
-		<div class="cart-section">
-            <div class="cart" onclick="openCart()">
-			Item(s) <span class="item-amount">0</span> | <span class="amount">0.00</span>€
+
+        <div class="right-side">
+
+            <div class="search">
+                <input type="text" placeholder="Search..." oninput="search()" id="search">
             </div>
-                <div id="cart-open">
-                    <div class="item-count">
-                        Items:&nbsp;<span class="item-amount">0</span>
-                    </div>
-                    <hr>
-                        <div id="cart-items">
+
+
+    		<div class="cart-section">
+                <div class="cart" onclick="openCart()">
+    			Item(s) <span class="item-amount">0</span> | <span class="amount">0.00</span>€
+                </div>
+                    <div id="cart-open">
+                        <div class="item-count">
+                            Items:&nbsp;<span class="item-amount">0</span>
                         </div>
                         <hr>
-                        <div class="checkout">
-                            <div class="checkout-total">
-                                Total: <span class="amount">0.00</span>€
+                            <div id="cart-items">
                             </div>
-                        <button class="checkout-button">CHECK OUT</button>
+                            <hr>
+                            <div class="checkout">
+                                <div class="checkout-total">
+                                    Total: <span class="amount">0.00</span>€
+                                </div>
+                            <button class="checkout-button">CHECK OUT</button>
+                        </div>
                     </div>
-                </div>
-		</div>
+    		</div>
+        </div>
                 <div class="menu-button">
                     <div class="menu-box" onclick="toggleMenu()">
                         <div class="menu-line-container">
@@ -289,8 +298,96 @@
         $("#line-2").toggleClass("active");
         $("#line-3").toggleClass("active");
         $(".header").toggleClass("active");
-        $(".cart-section").toggleClass("active");
+        $(".right-side").toggleClass("active");
         $(".menu-nav").toggleClass("active");
+    }
+
+
+    function search () {
+
+        var input = document.getElementById("search").value;
+
+        if (input != "") {
+
+            document.getElementById("content-box").innerHTML = "";            
+            for(var i = 0; i < items.length; i++) {
+
+                if (items[i].title.toLowerCase().indexOf(input.toLowerCase()) != -1) {
+
+                    var div = document.createElement("DIV");
+                        div.classList.add("divItem");
+
+                    var heading = document.createElement("H1");
+                        heading.innerHTML = items[i].title;
+
+                    var img = document.createElement("IMG");
+                        img.src = items[i].imageURL;
+
+                    var description = document.createElement("P");
+                        description.innerHTML = items[i].description;
+
+                    var price = document.createElement("P");
+                        price.classList.add("price");
+                            price.innerHTML = items[i].price + "€";
+
+                    var addCart = document.createElement("p");
+                        addCart.classList.add("addCart");
+                        addCart.innerHTML = "Add to cart";
+                        addCart.setAttribute("onclick", "addToCart(" + items[i].price + ", " + items[i].id + ")");
+                        addCart.setAttribute("id", items[i].id);
+
+                    div.appendChild(heading);
+                    div.appendChild(img);
+                    div.appendChild(description);
+                    div.appendChild(price);
+                    div.appendChild(addCart);
+
+
+                    document.getElementById("content-box").appendChild(div);
+                }
+
+            }
+        } else {
+            document.getElementById("content-box").innerHTML = "";
+            for(var i = 0; i < items.length; i++) {
+
+                    var div = document.createElement("DIV");
+                        div.classList.add("divItem");
+
+                    var heading = document.createElement("H1");
+                        heading.innerHTML = items[i].title;
+
+                    var img = document.createElement("IMG");
+                        img.src = items[i].imageURL;
+
+                    var description = document.createElement("P");
+                        description.innerHTML = items[i].description;
+
+                    var price = document.createElement("P");
+                        price.classList.add("price");
+                            price.innerHTML = items[i].price + "€";
+
+                    var addCart = document.createElement("p");
+                        addCart.classList.add("addCart");
+                        addCart.innerHTML = "Add to cart";
+                        addCart.setAttribute("onclick", "addToCart(" + items[i].price + ", " + items[i].id + ")");
+                        addCart.setAttribute("id", items[i].id);
+
+                    div.appendChild(heading);
+                    div.appendChild(img);
+                    div.appendChild(description);
+                    div.appendChild(price);
+                    div.appendChild(addCart);
+
+
+                    document.getElementById("content-box").appendChild(div);
+
+
+
+                }
+        }
+
+
     }
 </script>
 </body>

@@ -186,7 +186,38 @@ nav a {
 		width: 100%;
 	}
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 580px) {
+	.search > input {
+		min-width: 50px;
+		width: 100% !important;
+	} 
+}
+@media screen and (max-width: 370px) {
+	header {
+		height: 160px;
+	}
+	.right-side {
+		align-items: flex-start !important;
+		flex-direction: column-reverse !important;
+		justify-content: space-between;
+		max-width: 220px;
+	}
+	.search > input {
+		margin: 0px 20px 20px 20px;
+		position: absolute;
+		bottom: 0;
+		width: calc(100% - 40px) !important;
+		left: 0;
+		right: 0;
+	}
+	#content-box {
+		margin-top: 160px;
+	}
+}
+
+
+
+@media screen and (max-width: 930px) {
 	nav {
 		display: none;
 	}
@@ -201,6 +232,14 @@ nav a {
 	}
 	.cart-div-img {
 		text-align: center;
+	}
+	.right-side {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+	}
+	.right-side > .search {
+		margin-left: 20px;
 	}
 }
 @media screen and (max-width: 270px) {
@@ -217,6 +256,27 @@ nav a {
 	.menu-button {
 		margin-right: 0px !important;
 		justify-content: center !important;
+	}
+	.search > input {
+		position: static;
+		margin: 0 0 !important;
+		width: 85% !important;
+	}
+	.right-side {
+		max-height: 80px;
+		width: 100%;
+		align-items: center !important;
+		max-width: none;
+		flex-direction: row-reverse !important;
+
+	}
+	.search {
+		max-width: 40%;
+		margin: 0 !important;
+		height: auto;
+	}
+	.cart-section {
+		max-height: 80px;
 	}
 }
 .menu-button {
@@ -270,7 +330,7 @@ nav a {
 	flex-direction: column;
 	justify-content: flex-start;
 }
-.cart-section.active {
+.right-side.active {
 	display: none;
 }
 .menu-nav {
@@ -293,4 +353,24 @@ nav a {
 @keyframes opacityp {
 	from {opacity: 0;}
 	to {opacity: 1;}
+}
+.right-side > div {
+	display: inline-block;
+}
+.search > input {
+	width: 250px;
+	height: 40px;
+	border-radius: 30px;
+	box-sizing: border-box;
+	padding-left: 20px;
+	border: none;
+	outline: none;
+	color: #444;
+	box-shadow: 0px 0px 3px #ccc;
+	transition: 0.5s ease-in-out;  
+	font-family: 'Manrope', sans-serif;
+	letter-spacing: 0.5px;
+}
+.search {
+	margin-right: 20px;
 }
