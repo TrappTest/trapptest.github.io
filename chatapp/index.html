@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Firebase HTML</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="authentication">
+    <p>Email</p>
+    <input id="email" autocomplete="off" type="email" value="gert.kalviste@gmail.com" autocomplete="off"></input>
+    <p>Password</p>
+    <input id="password" type="Password" value="12345678"></input>
+    <p></p>
+    <div>
+    	<button onclick="signup()">Sign up</button>
+    	<button onclick="login()">Login</button>
+    </div>
+    <p id="feedback"></p> 
+</div>
+
+<div id="screen-chat">
+	<div class="top-chat-header">
+		<button onclick="showAuth()">Back</button>
+		<p>#general</p>
+	</div>
+	<div id="messages">
+	</div>
+	<div class="bottom-chat-box">
+		<input id="message-input" autocomplete="off">
+		<button onclick="sendMessage()">Send</button>
+	</div>
+</div>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
